@@ -49,6 +49,7 @@ from .const import (
     CONF_ENABLE_UPDATES,
     CONF_FONT_STYLE,
     CONF_HOME,
+    CONF_INFO,
     CONF_INTENT,
     CONF_INTENT_DEVICE,
     CONF_LIST,
@@ -238,6 +239,7 @@ async def get_dashboard_options_schema(
         vol.Optional(CONF_MUSIC): str,
         vol.Optional(CONF_INTENT): str,
         vol.Optional(CONF_LIST): str,
+        vol.Optional(CONF_INFO): str,
     }
     BACKGROUND_SETTINGS = {
         vol.Optional(CONF_BACKGROUND_MODE): SelectSelector(

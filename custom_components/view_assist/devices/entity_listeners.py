@@ -680,7 +680,9 @@ class EntityStateChangedHandler:
                 ]
                 # Navigate first to trigger title clear
                 if navigation_manager:
-                    navigation_manager.browser_navigate("view-assist/info")
+                    navigation_manager.browser_navigate(
+                        self.config.runtime_data.dashboard.info or "view-assist/info"
+                    )
                 # Then set the title/message after navigation to prevent clearing
                 updates.update(
                     {
