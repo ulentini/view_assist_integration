@@ -1,0 +1,131 @@
+{
+    "decimal_separator": ",",
+    "numbers": {
+        "zero": "zero",
+        "one": ["uno", "una", "un", "un'"],
+        "two": "due",
+        "three": "tre",
+        "four": "quattro",
+        "five": "cinque",
+        "six": "sei",
+        "seven": "sette",
+        "eight": "otto",
+        "nine": "nove",
+        "ten": "dieci",
+        "eleven": "undici",
+        "twelve": "dodici",
+        "thirteen": "tredici",
+        "fourteen": "quattordici",
+        "fifteen": "quindici",
+        "sixteen": "sedici",
+        "seventeen": "diciassette",
+        "eighteen": "diciotto",
+        "nineteen": "diciannove",
+        "twenty": "venti",
+        "twenty one": "ventuno",
+        "twenty two": "ventidue",
+        "twenty three": "ventitré",
+        "twenty four": "ventiquattro",
+        "twenty five": "venticinque",
+        "twenty six": "ventisei",
+        "twenty seven": "ventisette",
+        "twenty eight": "ventotto",
+        "twenty nine": "ventinove",
+        "thirty": "trenta",
+        "forty": "quaranta",
+        "fifty": "cinquanta",
+        "sixty": "sessanta",
+        "seventy": "settanta",
+        "eighty": "ottanta",
+        "ninety": "novanta"
+    },
+    "days": {
+        "monday": "lunedì",
+        "tuesday": "martedì",
+        "wednesday": "mercoledì",
+        "thursday": "giovedì",
+        "friday": "venerdì",
+        "saturday": "sabato",
+        "sunday": "domenica",
+        "today": "oggi",
+        "tomorrow": "domani"
+    },
+    "durations": {
+        "days": ["giorni", "giorno", "gg"],
+        "hours": ["ore", "ora", "h"],
+        "minutes": ["minuti", "minuto", "min", "m"],
+        "seconds": ["secondi", "secondo", "sec", "s"],
+        "quarter of an hour": ["un quarto d'ora", "quarto d'ora", "quarti d'ora"],
+        "half an hour": ["mezz'ora", "mezzora", "mezze ore"],
+        "three quarters of an hour": ["tre quarti d'ora"]
+    },
+    "operators": {
+        "before": ["meno"],
+        "after": ["e", "passate", "passato", "dopo"],
+        "and": ["e"],
+        "minus": ["meno"]
+    },
+    "time_of_day": {
+        "morning": ["di mattina", "del mattino", "la mattina", "di mattino"],
+        "noon": ["mezzogiorno"],
+        "afternoon": ["di pomeriggio", "del pomeriggio", "il pomeriggio"],
+        "evening": ["di sera", "la sera"],
+        "night": ["di notte", "la notte"],
+        "midnight": ["mezzanotte", "la mezzanotte"],
+        "tonight": ["stasera", "stanotte"]
+    },
+    "fractions": {
+        "oclock": ["in punto"],
+        "half": ["mezza", "e mezza"],
+        "quarter": ["un quarto", "quarto"],
+        "threequarters": ["tre quarti"]
+    },
+    "other_words": {
+        "the": ["il", "la", "lo", "i", "gli", "le", "l'"],
+        "of": ["di", "del", "della", "dello", "dei", "degli", "delle", "d'"],
+        "in": ["in", "tra", "fra"],
+        "in the": ["nella", "nel", "negli", "nelle"],
+        "at": ["alle", "all'", "alla", "a", "ad"],
+        "this": ["questo", "questa", "questi", "queste", "quest'"],
+        "on": ["il", "la", "di"],
+        "next": ["prossimo", "prossima", "prossimi", "prossime"]
+    },
+    "compound_words": {
+        "{a:numbers} e {b:numbers}": "{a} {b}"
+    },
+    "structures": {
+        "basic_time": [
+            "{hours} oclock",
+            "{minutes} {operator} {hours}",
+            "{minutes} minutes {operator} {hours}",
+            "{hours} and {fractions}",
+            "{hours} and a {fractions}",
+            "{fractions} {operator} {hours}"
+        ],
+        "advanced_time": [
+            "{special_hour} {day}",
+            "{basic_time} {time_of_day}",
+            "{basic_time} {time_of_day} {day}",
+            "{day} {basic_time}",
+            "{day} at {basic_time}",
+            "{day} at {basic_time} {time_of_day}",
+            "{day} {time_of_day} at {basic_time}",
+            "{day} at {special_hour}"
+        ],
+        "basic_interval": [
+            "{hours} hours and {fractions}"
+        ],
+        "advanced_interval": []
+    },
+    "responses": {
+        "timer_set": "Timer impostato per {time}",
+        "timer_named_set": "Timer {name} impostato per {time}",
+        "timer_already_exists": "Esiste già un timer chiamato {name}",
+        "timer_none": "Non ci sono timer impostati",
+        "timer_list": "Hai i seguenti timer impostati: {timers}",
+        "timer_deleted": "Timer {name} eliminato",
+        "timer_not_found": "Non è stato trovato nessun timer chiamato {name}",
+        "timer_remaining": "Mancano {remaining} al timer {name}",
+        "timer_error": "Impossibile interpretare l'orario o l'intervallo"
+    }
+}
