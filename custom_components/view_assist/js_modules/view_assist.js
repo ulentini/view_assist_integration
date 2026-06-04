@@ -1,6 +1,6 @@
-import { timerCards } from "./timers.js?v=1.0.27";
+import { timerCards } from "./timers.js?v=1.0.28";
 
-const version = "1.0.27"
+const version = "1.0.28"
 const TIMEOUT_ERROR = "SELECTTREE-TIMEOUT";
 
 export async function await_element(el, hard = false) {
@@ -377,6 +377,8 @@ class ViewAssist {
       )
 
       enabled ? elMain?.style?.setProperty("--mdc-drawer-width", "0px") : elMain?.style?.removeProperty("--mdc-drawer-width");
+      //Fix for HA 2026.6 where they changed the sidebar width variable name
+      enabled ? elMain?.style?.setProperty("--ha-sidebar-width", "0px") : elMain?.style?.removeProperty("--ha-sidebar -width");
 
       await selectTree(
         elMain, "$ partial-panel-resolver"
@@ -395,6 +397,9 @@ class ViewAssist {
       ).then((el) => {
         enabled ? el.style.setProperty("display", "none") : el.style.removeProperty("display")
       });
+
+      // HA 2026.6
+
 
       // Hide white line on left
       await selectTree(
