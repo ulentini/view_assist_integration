@@ -435,7 +435,8 @@ class SensorAttributeChangedHandler:
         elif new_mode == VAMode.CYCLE:
             # Start cycling views
             if self.navigation_manager:
-                self.navigation_manager.start_display_view_cycle(CYCLE_VIEWS)
+                cycle_views = self.config.runtime_data.dashboard.display_settings.cycle_views
+                self.navigation_manager.start_display_view_cycle(cycle_views)
 
         elif new_mode == VAMode.HOLD:
             # Hold mode, so cancel any revert timer
