@@ -78,21 +78,17 @@ class WebsocketManager:
         """Register a new connection."""
 
         # Add to known browser ids list
-        if (
-            str(browser_id).startswith("va-")
-            and browser_id not in self.hass.data[DOMAIN][BROWSER_IDS]
-        ):
+        if (browser_id).startswith("va-"):
+            # Ensure not registering duplicate connection
+            self.unregister_connection(browser_id)
+
+            # Add to known browser ids list
             self.hass.data[DOMAIN][BROWSER_IDS][browser_id] = browser_id
 
-        # Register handler for connection
-        handler = WebsocketListenerHandler(self.hass, connection, browser_id, msg_id)
-
-        # If duplicate connection, stop old one
-        if browser_id in self.connections:
-            self.connections[browser_id].stop()
-
-        self.connections[browser_id] = handler
-        handler.start()
+            self.connections[browser_id] = WebsocketListenerHandler(
+                self.hass, connection, browser_id, msg_id
+            )
+            self.connections[browser_id].start()
 
     def unregister_connection(self, browser_id: str, unloading: bool = False):
         """Unregister a connection."""
@@ -336,7 +332,6 @@ def setup_websocket_commands(hass: HomeAssistant) -> None:
 
         def close_connection():
             _LOGGER.debug("Browser with id %s disconnected", browser_id)
-            WebsocketManager.get(hass).unregister_connection(browser_id)
 
         # Register browser
         await WebsocketManager.get(hass).async_register_connection(

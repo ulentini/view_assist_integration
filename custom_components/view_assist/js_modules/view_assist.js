@@ -1,6 +1,6 @@
 import { timerCards } from "./timers.js?v=1.0.28";
 
-const version = "1.0.28"
+const version = "1.0.29"
 const TIMEOUT_ERROR = "SELECTTREE-TIMEOUT";
 
 export async function await_element(el, hard = false) {
@@ -507,10 +507,13 @@ class ViewAssist {
       if (this.connected) {
         window.addEventListener("connection-status", (ev) => {
           if (ev.detail != "connected") {
-            this.connect()
-          } else {
+            console.log("View Assist - Connection lost");
             this.connected = false;
             clearInterval(this.serverTimeHandler)
+          } else {
+            if (!this.connected) {
+              this.connect();
+            }
           }
         });
 
@@ -568,10 +571,12 @@ class ViewAssist {
         epoch: new Date().getTime()
       })
       this.connected = true;
-    } catch {
+      console.log("View Assist - Connected to server");
+    } catch (error) {
+      console.log("View Assist - Unable to connect to server - " + error.message + ". Retrying in 2s. Attempt: " + attempts);
       this.connected = false;
-      if (attempts < 50) {
-        setTimeout(() => this.connect(attempts + 1), 500);
+      if (attempts < 60) {
+        setTimeout(() => this.connect(attempts + 1), 2000);
       } else {
         console.log("View Assist - Unable to connect to server")
       }
@@ -593,7 +598,7 @@ class ViewAssist {
     const payload = msg["payload"];
     const is_mimic = this.variables.config?.mimic_device;
 
-    //console.log("Event: " + event + ", Payload: " + JSON.stringify(payload));
+    console.log("Event: " + event + ", Payload: " + JSON.stringify(payload));
 
     switch (event) {
       case "registered":
