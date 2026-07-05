@@ -599,7 +599,7 @@ class ViewAssist {
     const payload = msg["payload"];
     const is_mimic = this.variables.config?.mimic_device;
 
-    console.log("Event: " + event + ", Payload: " + JSON.stringify(payload));
+    //console.log("Event: " + event + ", Payload: " + JSON.stringify(payload));
 
     switch (event) {
       case "registered":
